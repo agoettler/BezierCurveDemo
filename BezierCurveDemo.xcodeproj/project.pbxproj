@@ -13,6 +13,7 @@
 		75DAAEC91D8E46570066C293 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75DAAEC81D8E46570066C293 /* Assets.xcassets */; };
 		75DAAECC1D8E46570066C293 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75DAAECA1D8E46570066C293 /* LaunchScreen.storyboard */; };
 		75DAAED81D8F30740066C293 /* CurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DAAED71D8F30740066C293 /* CurveView.swift */; };
+		75DAAEDA1D8F50290066C293 /* ControlPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DAAED91D8F50290066C293 /* ControlPointView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		75DAAECB1D8E46570066C293 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75DAAECD1D8E46570066C293 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75DAAED71D8F30740066C293 /* CurveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurveView.swift; path = ../CurveView.swift; sourceTree = "<group>"; };
+		75DAAED91D8F50290066C293 /* ControlPointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlPointView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				75DAAED71D8F30740066C293 /* CurveView.swift */,
+				75DAAED91D8F50290066C293 /* ControlPointView.swift */,
 				75DAAEC11D8E46570066C293 /* AppDelegate.swift */,
 				75DAAEC31D8E46570066C293 /* ViewController.swift */,
 				75DAAEC51D8E46570066C293 /* Main.storyboard */,
@@ -143,6 +146,7 @@
 				75DAAED81D8F30740066C293 /* CurveView.swift in Sources */,
 				75DAAEC41D8E46570066C293 /* ViewController.swift in Sources */,
 				75DAAEC21D8E46570066C293 /* AppDelegate.swift in Sources */,
+				75DAAEDA1D8F50290066C293 /* ControlPointView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +308,7 @@
 				75DAAED21D8E46570066C293 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
