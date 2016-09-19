@@ -84,6 +84,7 @@ class CurveView: UIView
         {
             case .quadratic:
                 bezierCurve.addQuadCurve(to: controlPoints.last!.center, controlPoint: controlPoints[1].center)
+            
             case .cubic:
                 bezierCurve.addCurve(to: controlPoints.last!.center, controlPoint1: controlPoints[1].center, controlPoint2: controlPoints[2].center)
         }

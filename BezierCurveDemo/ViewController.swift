@@ -8,7 +8,10 @@
 
 /*
  Optional To Do:
-    Make the control points transparent and prettier
+    - Make the control points transparent and prettier
+    - Draw the convex hull
+    - Toggle the convex hull
+    - Randomize the initial positions of the control points
 */
 
 import UIKit
