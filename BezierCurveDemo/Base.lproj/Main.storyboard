@@ -32,29 +32,32 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="n5Z-h3-aD8">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="n5Z-h3-aD8">
                                 <segments>
+                                    <segment title="Quadratic"/>
                                     <segment title="Cubic"/>
-                                    <segment title="Quadratic">
-                                        <size key="contentOffset" width="-1" height="0.0"/>
-                                    </segment>
                                 </segments>
+                                <connections>
+                                    <action selector="curveModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="44O-EY-c1h"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="n5Z-h3-aD8" firstAttribute="top" secondItem="yPo-2U-0s9" secondAttribute="bottom" constant="8" id="3vh-Qn-mVn"/>
                             <constraint firstItem="n5Z-h3-aD8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9vl-Ey-iav"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aR5-Mi-ele" secondAttribute="bottom" constant="47" id="Sqw-1n-drM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aR5-Mi-ele" secondAttribute="bottom" constant="8" id="Sqw-1n-drM"/>
                             <constraint firstAttribute="leadingMargin" secondItem="yPo-2U-0s9" secondAttribute="leading" id="cJP-sa-fdB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yPo-2U-0s9" secondAttribute="trailing" id="m7i-dh-Nkh"/>
                             <constraint firstItem="aR5-Mi-ele" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="puY-Sd-IAj"/>
+                            <constraint firstItem="n5Z-h3-aD8" firstAttribute="width" secondItem="aR5-Mi-ele" secondAttribute="width" id="rI9-1D-Epi"/>
                             <constraint firstItem="aR5-Mi-ele" firstAttribute="top" secondItem="n5Z-h3-aD8" secondAttribute="bottom" constant="8" id="spK-4C-P2h"/>
                             <constraint firstItem="yPo-2U-0s9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="wdF-yk-B5Y"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="BezierCurveDisplay" destination="yPo-2U-0s9" id="erT-Sf-oV8"/>
+                        <outlet property="curveModeSegmentedControl" destination="n5Z-h3-aD8" id="PRF-zl-0pr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

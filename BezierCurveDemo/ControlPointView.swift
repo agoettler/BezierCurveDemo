@@ -84,7 +84,7 @@ class ControlPointView: UIView {
         }
 
         
-        // move the damn point already
+        // just move the point already
         self.center = CGPoint(x: self.center.x + xTranslation, y: self.center.y + yTranslation)
         
         recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self)

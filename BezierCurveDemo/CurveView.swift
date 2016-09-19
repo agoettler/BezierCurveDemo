@@ -20,9 +20,9 @@ class CurveView: UIView
     
     var controlPoints = [ControlPointView]()
     
-    let controlPointSize: CGSize = CGSize(width: 20, height: 20)
+    let controlPointSize: CGSize = CGSize(width: 10, height: 10)
     
-    enum BezierCurveMode: Int
+    public enum BezierCurveMode: Int
     {
         case quadratic = 3, cubic = 4
     }
@@ -111,5 +111,26 @@ class CurveView: UIView
             
             self.addSubview(controlPoints[index])
         }
+        
+        self.setNeedsDisplay()
+    }
+    
+    func removeControlPoints()
+    {
+        for controlPoint in controlPoints
+        {
+            controlPoint.removeFromSuperview()
+        }
+        
+        controlPoints.removeAll()
+    }
+    
+    func changeCurveMode(to: BezierCurveMode)
+    {
+        currentCurveMode = to
+        
+        removeControlPoints()
+        
+        createControlPoints()
     }
 }
