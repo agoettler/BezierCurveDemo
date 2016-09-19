@@ -24,6 +24,7 @@ class ViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
 
+    // this function was only used in initial design, but it's a neat piece of code, so it stays
     @IBAction func PanGestureHappened(_ sender: UIPanGestureRecognizer)
     {
         let translation = sender.translation(in: self.view)

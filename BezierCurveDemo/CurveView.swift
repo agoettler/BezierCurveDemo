@@ -78,7 +78,7 @@ class CurveView: UIView
     {
         for index in 0..<currentCurveMode.rawValue
         {
-            controlPoints.append(ControlPointView(frame: CGRect(origin: CGPoint(x: 100 * index, y: 250), size: controlPointSize)))
+            controlPoints.append(ControlPointView(frame: CGRect(origin: CGPoint(x: 250, y: 250 * index), size: controlPointSize)))
             
             self.addSubview(controlPoints[index])
         }
