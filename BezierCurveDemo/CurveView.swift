@@ -20,7 +20,7 @@ class CurveView: UIView
     
     var controlPoints = [ControlPointView]()
     
-    let controlPointSize: CGSize = CGSize(width: 10, height: 10)
+    let controlPointSize: CGSize = CGSize(width: 20, height: 20)
     
     public enum BezierCurveMode: Int
     {
