@@ -88,6 +88,9 @@ class ControlPointView: UIView {
         self.center = CGPoint(x: self.center.x + xTranslation, y: self.center.y + yTranslation)
         
         recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self)
+        
+        // alert that the superview needs to be redrawn
+        superview!.setNeedsDisplay()
     }
 
 }

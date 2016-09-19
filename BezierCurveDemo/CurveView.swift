@@ -58,11 +58,40 @@ class CurveView: UIView
         
         self.setGeometry()
         
-        let viewBoundary: UIBezierPath = UIBezierPath(rect: bounds)
+        drawViewBoundary(rect: rect)
+        
+        drawBezierCurve(rect: rect)
+    }
+    
+    func drawViewBoundary(rect: CGRect)
+    {
+        let viewBoundary: UIBezierPath = UIBezierPath(rect: self.bounds)
         viewBoundary.lineWidth = 2
         viewBoundary.lineCapStyle = CGLineCap.round
         UIColor.black.setStroke()
         viewBoundary.stroke()
+    }
+    
+    func drawBezierCurve(rect: CGRect)
+    {
+        let bezierCurve: UIBezierPath = UIBezierPath()
+        
+        // start drawing at the first control point
+        bezierCurve.move(to: controlPoints[0].center)
+        
+        // add the curve depending on the mode
+        switch currentCurveMode
+        {
+            case .quadratic:
+                bezierCurve.addQuadCurve(to: controlPoints.last!.center, controlPoint: controlPoints[1].center)
+            case .cubic:
+                bezierCurve.addCurve(to: controlPoints.last!.center, controlPoint1: controlPoints[1].center, controlPoint2: controlPoints[2].center)
+        }
+        
+        bezierCurve.lineWidth = 3
+        bezierCurve.lineCapStyle = CGLineCap.round
+        UIColor.black.setStroke()
+        bezierCurve.stroke()
     }
  
     // if the corner points are not necessary, this function may be removed
@@ -78,7 +107,7 @@ class CurveView: UIView
     {
         for index in 0..<currentCurveMode.rawValue
         {
-            controlPoints.append(ControlPointView(frame: CGRect(origin: CGPoint(x: 250, y: 250 * index), size: controlPointSize)))
+            controlPoints.append(ControlPointView(frame: CGRect(origin: CGPoint(x: 100 * index, y: 100 * index), size: controlPointSize)))
             
             self.addSubview(controlPoints[index])
         }
