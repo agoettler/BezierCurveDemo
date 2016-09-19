@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ControlPointView: UIView {
+class ControlPointView: UIView
+{
+
 
     func setup()
     {
@@ -20,8 +22,9 @@ class ControlPointView: UIView {
         // add the new gesture recognizer to the
         self.gestureRecognizers = [panGestureRecognizer]
         
-        // set the background color to white for now
-        self.backgroundColor = UIColor.white
+        // make the background transparent
+        self.isOpaque = false
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.0)
     }
 
     override init(frame: CGRect)
@@ -47,12 +50,17 @@ class ControlPointView: UIView {
     {
         // Drawing code
         UIColor.blue.setStroke()
-        UIColor.blue.setFill()
+        UIColor.blue.withAlphaComponent(0.0).setFill()
+        
         let controlPointCircle: UIBezierPath = UIBezierPath(ovalIn: rect)
         controlPointCircle.lineWidth = 2
         controlPointCircle.addClip()
         controlPointCircle.fill()
-        //controlPointCircle.stroke()
+        controlPointCircle.stroke()
+        
+        UIColor.blue.setFill()
+        let controlPointDot: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: self.center.x - 2.5, y: self.center.y - 2.5, width: 5, height: 5))
+        controlPointDot.fill()
     }
     
     func translateOnPan(recognizer: UIPanGestureRecognizer)

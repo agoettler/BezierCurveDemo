@@ -9,18 +9,12 @@
 import UIKit
 
 class CurveView: UIView
-{
-    // these may not be necessary
-    var topLeftCorner: CGPoint?
-    var topRightCorner: CGPoint?
-    var bottomRightCorner: CGPoint?
-    var bottomLeftCorner: CGPoint?
-    
+{    
     var currentCurveMode: BezierCurveMode = BezierCurveMode.quadratic
     
     var controlPoints = [ControlPointView]()
     
-    let controlPointSize: CGSize = CGSize(width: 20, height: 20)
+    let controlPointSize: CGSize = CGSize(width: 30, height: 30)
     
     public enum BezierCurveMode: Int
     {
@@ -55,8 +49,6 @@ class CurveView: UIView
     override func draw(_ rect: CGRect)
     {
         // Drawing code
-        
-        self.setGeometry()
         
         drawViewBoundary(rect: rect)
         
@@ -95,15 +87,6 @@ class CurveView: UIView
         bezierCurve.stroke()
     }
  
-    // if the corner points are not necessary, this function may be removed
-    func setGeometry()
-    {
-        topLeftCorner = bounds.origin
-        topRightCorner = CGPoint(x: bounds.origin.x + bounds.width, y: bounds.origin.y)
-        bottomRightCorner = CGPoint(x: bounds.origin.x + bounds.width, y: bounds.origin.y + bounds.height)
-        bottomLeftCorner = CGPoint(x: bounds.origin.x, y: bounds.origin.y + bounds.height)
-    }
-    
     func createControlPoints()
     {
         for index in 0..<currentCurveMode.rawValue
