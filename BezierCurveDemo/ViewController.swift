@@ -8,18 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController
+{
+    @IBOutlet weak var BezierCurveDisplay: CurveView!
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func PanGestureHappened(_ sender: UIPanGestureRecognizer)
+    {
+        let translation = sender.translation(in: self.view)
+        
+        if let senderView = sender.view
+        {
+            senderView.center = CGPoint(x: senderView.center.x + translation.x, y: senderView.center.y + translation.y)
+        }
+        
+        sender.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
+    }
 
 }
 
