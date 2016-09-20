@@ -20,6 +20,8 @@ class ViewController: UIViewController
 {
     @IBOutlet weak var BezierCurveDisplay: CurveView!
     
+    @IBOutlet weak var boundingBoxToggleSwitch: UISwitch!
+    
     @IBOutlet weak var curveModeSegmentedControl: UISegmentedControl!
 
     override func viewDidLoad()
@@ -27,6 +29,8 @@ class ViewController: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print("Initial mode: \(self.curveModeSegmentedControl.titleForSegment(at: self.curveModeSegmentedControl.selectedSegmentIndex)!)")
+        
+        print("Bounding box set to: \(boundingBoxToggleSwitch.isOn)")
     }
 
     override func didReceiveMemoryWarning()
@@ -69,6 +73,13 @@ class ViewController: UIViewController
         
         BezierCurveDisplay.changeCurveMode(to: newMode)
     }
-
+    
+    @IBAction func boundingBoxToggled(_ sender: UISwitch)
+    {
+        print("Bounding box toggled to: \(boundingBoxToggleSwitch.isOn)")
+        
+        BezierCurveDisplay.changeConvexHullDrawing(to: boundingBoxToggleSwitch.isOn)
+    }
+    
 }
 

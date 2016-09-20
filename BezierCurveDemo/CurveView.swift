@@ -14,6 +14,8 @@ class CurveView: UIView
     
     var controlPoints = [ControlPointView]()
     
+    var convexHullActive: Bool = true
+    
     let controlPointSize: CGSize = CGSize(width: 30, height: 30)
     
     public enum BezierCurveMode: Int
@@ -54,7 +56,10 @@ class CurveView: UIView
         
         drawBezierCurve(rect: rect)
         
-        drawConvexHull(rect: rect)
+        if convexHullActive
+        {
+            drawConvexHull(rect: rect)
+        }
     }
     
     func drawViewBoundary(rect: CGRect)
@@ -91,6 +96,8 @@ class CurveView: UIView
     
     func drawConvexHull(rect: CGRect)
     {
+        // Warning to mathematicians: hull may not actually be convex
+        
         let convexHull: UIBezierPath = UIBezierPath()
         
         convexHull.move(to: controlPoints.first!.center)
@@ -154,5 +161,12 @@ class CurveView: UIView
         removeControlPoints()
         
         createControlPoints()
+    }
+    
+    func changeConvexHullDrawing(to: Bool)
+    {
+        convexHullActive = to
+        
+        self.setNeedsDisplay()
     }
 }
