@@ -91,7 +91,16 @@ class CurveView: UIView
     {
         for index in 0..<currentCurveMode.rawValue
         {
-            controlPoints.append(ControlPointView(frame: CGRect(origin: CGPoint(x: 100 * index, y: 100 * index), size: controlPointSize)))
+            // randomize the position of the new points
+            // Problem: on startup, the points are often placed outside of the CurveView
+            //          probably an issue with initialization
+            let newXValue: CGFloat = CGFloat( Int( arc4random() ) % Int(self.bounds.width - controlPointSize.width) )
+            
+            let newYValue: CGFloat = CGFloat( Int( arc4random() ) % Int(self.bounds.height - controlPointSize.height) )
+            
+            let newOriginPoint: CGPoint = CGPoint(x: newXValue, y: newYValue)
+            
+            controlPoints.append(ControlPointView(frame: CGRect(origin: newOriginPoint, size: controlPointSize)))
             
             self.addSubview(controlPoints[index])
         }

@@ -58,6 +58,7 @@ class ControlPointView: UIView
         controlPointCircle.fill()
         controlPointCircle.stroke()
         
+        // Problem: only the first ControlPointView drawn in the CurveView gets this center dot
         UIColor.blue.setFill()
         let controlPointDot: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: self.center.x - 2.5, y: self.center.y - 2.5, width: 5, height: 5))
         controlPointDot.fill()

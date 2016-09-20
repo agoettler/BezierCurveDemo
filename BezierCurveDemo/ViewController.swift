@@ -11,7 +11,7 @@
     - Make the control points transparent and prettier
     - Draw the convex hull
     - Toggle the convex hull
-    - Randomize the initial positions of the control points
+    x Randomize the initial positions of the control points
 */
 
 import UIKit
