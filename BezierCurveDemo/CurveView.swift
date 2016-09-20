@@ -12,9 +12,9 @@ class CurveView: UIView
 {    
     var currentCurveMode: BezierCurveMode = BezierCurveMode.quadratic
     
-    var controlPoints = [ControlPointView]()
+    var currentBoundingBoxMode: Bool = true
     
-    var convexHullActive: Bool = true
+    var controlPoints = [ControlPointView]()
     
     let controlPointSize: CGSize = CGSize(width: 30, height: 30)
     
@@ -28,6 +28,19 @@ class CurveView: UIView
         self.currentCurveMode = BezierCurveMode.quadratic
         
         self.createControlPoints()
+    }
+    
+    func startUp(initialCurveMode: BezierCurveMode, initialBoundingBoxActivity: Bool)
+    {
+        // not a true initializer, but called by viewDidLoad
+        // sets drawing modes to match the initial settings of the UI controls
+        
+        currentCurveMode = initialCurveMode
+        
+        currentBoundingBoxMode = initialBoundingBoxActivity
+        
+        self.setNeedsDisplay()
+        
     }
     
     override init(frame: CGRect)
@@ -56,7 +69,7 @@ class CurveView: UIView
         
         drawBezierCurve(rect: rect)
         
-        if convexHullActive
+        if currentBoundingBoxMode
         {
             drawConvexHull(rect: rect)
         }
@@ -165,7 +178,7 @@ class CurveView: UIView
     
     func changeConvexHullDrawing(to: Bool)
     {
-        convexHullActive = to
+        currentBoundingBoxMode = to
         
         self.setNeedsDisplay()
     }

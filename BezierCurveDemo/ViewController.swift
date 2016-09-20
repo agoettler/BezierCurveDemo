@@ -8,9 +8,9 @@
 
 /*
  Optional To Do:
-    - Make the control points transparent and prettier
-    - Draw the convex hull
-    - Toggle the convex hull
+    ? Make the control points transparent and prettier - has issues
+    x Draw the convex hull
+    x Toggle the convex hull
     x Randomize the initial positions of the control points
 */
 
@@ -28,9 +28,29 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let initialCurveMode: CurveView.BezierCurveMode
+        
+        let initialBoundingBoxMode: Bool = boundingBoxToggleSwitch.isOn
+        
         print("Initial mode: \(self.curveModeSegmentedControl.titleForSegment(at: self.curveModeSegmentedControl.selectedSegmentIndex)!)")
         
-        print("Bounding box set to: \(boundingBoxToggleSwitch.isOn)")
+        switch self.curveModeSegmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            initialCurveMode = CurveView.BezierCurveMode.quadratic
+        case 1:
+            initialCurveMode = CurveView.BezierCurveMode.cubic
+        default:
+            print("Attempted to switch to an invalid mode")
+            // if invalid mode detected, reset it to the original
+            initialCurveMode = BezierCurveDisplay.currentCurveMode
+        }
+        
+        print("Bounding box started as: \(initialBoundingBoxMode)")
+        
+        // make sure that the CurveDisplay's initial settings match the UI controls
+        BezierCurveDisplay.startUp(initialCurveMode: initialCurveMode, initialBoundingBoxActivity: initialBoundingBoxMode)
     }
 
     override func didReceiveMemoryWarning()
