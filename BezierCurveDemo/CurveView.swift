@@ -102,9 +102,17 @@ class CurveView: UIView
         
         convexHull.close()
         
-        convexHull.setLineDash([4, 4], count: 2, phase: 1)
         convexHull.lineWidth = 3
         UIColor.gray.setStroke()
+        
+        // try making the dashes dots instead
+        // http://stackoverflow.com/questions/26018302/draw-dotted-not-dashed-line
+        // now that's cool
+        
+        let dashes: [CGFloat] = [convexHull.lineWidth * 0, convexHull.lineWidth * 2]
+        convexHull.setLineDash(dashes, count: dashes.count, phase: 1)
+        convexHull.lineCapStyle = CGLineCap.round
+        
         convexHull.stroke()
     }
  
