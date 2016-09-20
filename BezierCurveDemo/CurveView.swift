@@ -28,6 +28,7 @@ class CurveView: UIView
         self.currentCurveMode = BezierCurveMode.quadratic
         
         self.createControlPoints()
+      
     }
     
     func startUp(initialCurveMode: BezierCurveMode, initialBoundingBoxActivity: Bool)
@@ -182,4 +183,5 @@ class CurveView: UIView
         
         self.setNeedsDisplay()
     }
+    
 }

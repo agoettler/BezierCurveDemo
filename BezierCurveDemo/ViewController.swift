@@ -101,5 +101,11 @@ class ViewController: UIViewController
         BezierCurveDisplay.changeConvexHullDrawing(to: boundingBoxToggleSwitch.isOn)
     }
     
+    // testing in class, doesn't fix the problem
+    /*
+    override func viewWillAppear(_ animated: Bool) {
+        BezierCurveDisplay.createControlPoints()
+    }
+     */
 }
 

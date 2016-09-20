@@ -59,9 +59,11 @@ class ControlPointView: UIView
         controlPointCircle.stroke()
         
         // Problem: only the first ControlPointView drawn in the CurveView gets this center dot
+        //          Now that initial locations are randomized, the dots don't draw at all
         UIColor.blue.setFill()
         let controlPointDot: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: self.center.x - 2.5, y: self.center.y - 2.5, width: 5, height: 5))
         controlPointDot.fill()
+        controlPointDot.stroke()
     }
     
     func translateOnPan(recognizer: UIPanGestureRecognizer)
