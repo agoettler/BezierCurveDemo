@@ -53,6 +53,8 @@ class CurveView: UIView
         drawViewBoundary(rect: rect)
         
         drawBezierCurve(rect: rect)
+        
+        drawConvexHull(rect: rect)
     }
     
     func drawViewBoundary(rect: CGRect)
@@ -69,7 +71,7 @@ class CurveView: UIView
         let bezierCurve: UIBezierPath = UIBezierPath()
         
         // start drawing at the first control point
-        bezierCurve.move(to: controlPoints[0].center)
+        bezierCurve.move(to: controlPoints.first!.center)
         
         // add the curve depending on the mode
         switch currentCurveMode
@@ -85,6 +87,25 @@ class CurveView: UIView
         bezierCurve.lineCapStyle = CGLineCap.round
         UIColor.black.setStroke()
         bezierCurve.stroke()
+    }
+    
+    func drawConvexHull(rect: CGRect)
+    {
+        let convexHull: UIBezierPath = UIBezierPath()
+        
+        convexHull.move(to: controlPoints.first!.center)
+        
+        for index in 1..<controlPoints.count
+        {
+            convexHull.addLine(to: controlPoints[index].center)
+        }
+        
+        convexHull.close()
+        
+        convexHull.setLineDash([4, 4], count: 2, phase: 1)
+        convexHull.lineWidth = 3
+        UIColor.gray.setStroke()
+        convexHull.stroke()
     }
  
     func createControlPoints()
