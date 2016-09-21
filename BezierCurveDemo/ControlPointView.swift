@@ -24,7 +24,7 @@ class ControlPointView: UIView
         
         // make the background transparent
         self.isOpaque = false
-        self.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+        //self.backgroundColor = UIColor.white.withAlphaComponent(0.0)
     }
 
     override init(frame: CGRect)

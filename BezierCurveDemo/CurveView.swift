@@ -27,7 +27,7 @@ class CurveView: UIView
     {
         self.currentCurveMode = BezierCurveMode.quadratic
         
-        self.createControlPoints()
+        //self.createControlPoints()
       
     }
     

@@ -107,5 +107,10 @@ class ViewController: UIViewController
         BezierCurveDisplay.createControlPoints()
     }
      */
+    
+    override func viewDidLayoutSubviews()
+    {
+        BezierCurveDisplay.createControlPoints()
+    }
 }
 
