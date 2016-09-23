@@ -37,14 +37,14 @@ class ViewController: UIViewController
         
         switch self.curveModeSegmentedControl.selectedSegmentIndex
         {
-        case 0:
-            initialCurveMode = CurveView.BezierCurveMode.quadratic
-        case 1:
-            initialCurveMode = CurveView.BezierCurveMode.cubic
-        default:
-            print("Attempted to switch to an invalid mode")
-            // if invalid mode detected, reset it to the original
-            initialCurveMode = BezierCurveDisplay.currentCurveMode
+            case 0:
+                initialCurveMode = CurveView.BezierCurveMode.quadratic
+            case 1:
+                initialCurveMode = CurveView.BezierCurveMode.cubic
+            default:
+                print("Attempted to switch to an invalid mode")
+                // if invalid mode detected, reset it to the original
+                initialCurveMode = BezierCurveDisplay.currentCurveMode
         }
         
         print("Bounding box started as: \(initialBoundingBoxMode)")
@@ -100,13 +100,6 @@ class ViewController: UIViewController
         
         BezierCurveDisplay.changeConvexHullDrawing(to: boundingBoxToggleSwitch.isOn)
     }
-    
-    // testing in class, doesn't fix the problem
-    /*
-    override func viewWillAppear(_ animated: Bool) {
-        BezierCurveDisplay.createControlPoints()
-    }
-     */
     
     override func viewDidLayoutSubviews()
     {

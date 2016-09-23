@@ -16,7 +16,7 @@ class CurveView: UIView
     
     var controlPoints = [ControlPointView]()
     
-    let controlPointSize: CGSize = CGSize(width: 30, height: 30)
+    let controlPointSize: CGSize = CGSize(width: 40, height: 40)
     
     public enum BezierCurveMode: Int
     {
@@ -36,9 +36,9 @@ class CurveView: UIView
         // not a true initializer, but called by viewDidLoad
         // sets drawing modes to match the initial settings of the UI controls
         
-        currentCurveMode = initialCurveMode
+        self.currentCurveMode = initialCurveMode
         
-        currentBoundingBoxMode = initialBoundingBoxActivity
+        self.currentBoundingBoxMode = initialBoundingBoxActivity
         
         self.setNeedsDisplay()
         
@@ -142,8 +142,6 @@ class CurveView: UIView
         for index in 0..<currentCurveMode.rawValue
         {
             // randomize the position of the new points
-            // Problem: on startup, the points are often placed outside of the CurveView
-            //          probably an issue with initialization
             let newXValue: CGFloat = CGFloat( Int( arc4random() ) % Int(self.bounds.width - controlPointSize.width) )
             
             let newYValue: CGFloat = CGFloat( Int( arc4random() ) % Int(self.bounds.height - controlPointSize.height) )

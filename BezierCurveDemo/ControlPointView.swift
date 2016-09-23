@@ -10,7 +10,7 @@ import UIKit
 
 class ControlPointView: UIView
 {
-
+    let dotDiameter: CGFloat = 10
 
     func setup()
     {
@@ -49,6 +49,7 @@ class ControlPointView: UIView
     override func draw(_ rect: CGRect)
     {
         // Drawing code
+        
         UIColor.blue.setStroke()
         UIColor.blue.withAlphaComponent(0.0).setFill()
         
@@ -60,10 +61,17 @@ class ControlPointView: UIView
         
         // Problem: only the first ControlPointView drawn in the CurveView gets this center dot
         //          Now that initial locations are randomized, the dots don't draw at all
+        // Fix: was creating the BezierPath with self.center rather than using the CGRect passed to the draw function
+        //      it's not immediately apparent what the difference is
+        
         UIColor.blue.setFill()
-        let controlPointDot: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: self.center.x - 2.5, y: self.center.y - 2.5, width: 5, height: 5))
+        UIColor.blue.setStroke()
+        let controlPointDot: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: rect.width/2 - dotDiameter/2, y: rect.height/2 - dotDiameter/2, width: dotDiameter, height: dotDiameter))
+        //let controlPointDot: UIBezierPath = UIBezierPath(arcCenter: self.center, radius: 5, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
+        controlPointDot.addClip()
         controlPointDot.fill()
         controlPointDot.stroke()
+        
     }
     
     func translateOnPan(recognizer: UIPanGestureRecognizer)
